@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+destdir=[% shell_quote(config('repodir') _ '/' _ u.project _ '/' _ u.version) %]
+mkdir -p "$destdir"
+[% FOREACH file IN u.files.keys %]
+mv -f [% shell_quote(file) %] "$destdir"
+[% END %]
